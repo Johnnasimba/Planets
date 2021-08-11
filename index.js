@@ -4,13 +4,17 @@ const fs = require('fs');
 
 const habitablePlanets = []
 const max_survivable_light = 1.11;
-const min_survivable_light = 0.36
+const min_survivable_light = 0.36;
+const max_survivable_planet_radius = 1.6;
 
 
 function isHabitablePlanet(planet) {
 
     return planet['koi_disposition'] === 'CONFIRMED' 
-    && planet['koi_insol'] > min_survivable_light && planet['koi_insol'] < max_survivable_light;
+    && planet['koi_insol'] > min_survivable_light 
+    && planet['koi_insol'] < max_survivable_light
+    && planet['koi_prad'] < max_survivable_planet_radius
+    ;
 }
 
     
