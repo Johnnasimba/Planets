@@ -3,11 +3,14 @@ const parse = require('csv-parse');
 const fs = require('fs');
 
 const habitablePlanets = []
+const max_survivable_light = 1.11;
+const min_survivable_light = 0.36
 
 
 function isHabitablePlanet(planet) {
 
-    return planet['koi_disposition'] === 'CONFIRMED';
+    return planet['koi_disposition'] === 'CONFIRMED' 
+    && planet['koi_insol'] > min_survivable_light && planet['koi_insol'] < max_survivable_light;
 }
 
     
